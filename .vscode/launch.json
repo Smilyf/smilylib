@@ -1,0 +1,13 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//       {
+//         "name": "Run",
+//         "type": "cppdbg",
+//         "request": "launch",
+//         "program": "${workspaceFolder}/build/YourProgram",
+//         "preLaunchTask": "build",
+//         "miDebuggerPath": "/path/to/debugger"
+//       }
+//     ]
+//   }
