@@ -4,82 +4,91 @@
 #include <vector>
 #include <map>
 #include <deque>
-
-struct informationMap
-{
-public:
-    class readFileInformation
-    {
-    public:
-        HANDLE handle;
-        HANDLE completionEvent;
-        UINT32 size;
-        UINT64 fileOffset;
-        HANDLE eventHandle;
-        void *Address;
-        readFileInformation() = default;
-        readFileInformation(HANDLE handle_,
-                            HANDLE completionEvent_,
-                            UINT32 size_,
-                            UINT64 fileOffset_,
-                            HANDLE eventHandle_,
-                            void *Address_)
-        {
-            handle = handle_;
-            completionEvent = completionEvent_;
-            size = size_;
-            fileOffset = fileOffset_;
-            eventHandle = eventHandle_;
-            Address = Address_;
-        }
-        readFileInformation(const readFileInformation &t) = default;
-    };
-    std::mutex Mutex;
-    std::map<UINT_PTR, readFileInformation> handleMap;
-    informationMap() = default;
-    void push(UINT_PTR handle, readFileInformation value)
-    {
-        std::lock_guard<std::mutex> guard(Mutex);
-        if (handleMap.find(handle) != handleMap.end())
-        {
-
-            handleMap.at(handle) = value;
-            // std::cout << "+++++++++++++++++" << value.fileOffset << std::endl;
-        }
-        else
-        {
-            handleMap.emplace(handle, value);
-        }
-        // std::cout << "dasasdasd" << handle << std::endl;
-        // std::cout << "dasasdasd" << handleMap[handle].index << std::endl;
-    }
-    readFileInformation get(UINT_PTR handle)
-    {
-        std::lock_guard<std::mutex> guard(Mutex);
-        return handleMap.at(handle);
-        // try
-        // {
-        //     return handleMap.at(handle);
-        // }
-        // catch (const std::out_of_range &e)
-        // {
-        //     std::cout << "Key not found!" << std::endl;
-        // }
-    }
-    void erase(UINT_PTR userData)
-    {
-        std::lock_guard<std::mutex> guard(Mutex);
-        handleMap.erase(userData);
-    }
-};
+#include <atomic>
 
 struct smilyIoRing
 {
 public:
+    enum userDataEnum : UINT_PTR
+    {
+        userDataRegisterBuffers,
+        sscanf
+    };
+    enum ioRingType
+    {
+        readFile,
+        writeFile
+    };
+    struct informationMap
+    {
+    public:
+        class readFileInformation
+        {
+        public:
+            HANDLE handle;
+            HANDLE completionEvent;
+            UINT32 size;
+            UINT64 fileOffset;
+            HANDLE eventHandle;
+            void *Address;
+            smilyIoRing::ioRingType type;
+            readFileInformation() = default;
+            readFileInformation(HANDLE handle_,
+                                HANDLE completionEvent_,
+                                UINT32 size_,
+                                UINT64 fileOffset_,
+                                HANDLE eventHandle_,
+                                void *Address_, smilyIoRing::ioRingType type_)
+            {
+                handle = handle_;
+                completionEvent = completionEvent_;
+                size = size_;
+                fileOffset = fileOffset_;
+                eventHandle = eventHandle_;
+                Address = Address_;
+                type = type_;
+            }
+            readFileInformation(const readFileInformation &t) = default;
+        };
+        std::mutex Mutex;
+        std::map<UINT_PTR, readFileInformation> handleMap;
+        informationMap() = default;
+        void push(UINT_PTR handle, readFileInformation value)
+        {
+            std::lock_guard<std::mutex> guard(Mutex);
+            if (handleMap.find(handle) != handleMap.end())
+            {
+                handleMap.at(handle) = value;
+            }
+            else
+            {
+                handleMap.emplace(handle, value);
+            }
+        }
+        readFileInformation get(UINT_PTR handle)
+        {
+            std::lock_guard<std::mutex> guard(Mutex);
+            return handleMap.at(handle);
+            // try
+            // {
+            //     return handleMap.at(handle);
+            // }
+            // catch (const std::out_of_range &e)
+            // {
+            //     std::cout << "Key not found!" << std::endl;
+            // }
+        }
+        void erase(UINT_PTR userData)
+        {
+            std::lock_guard<std::mutex> guard(Mutex);
+            handleMap.erase(userData);
+        }
+    };
+
     IORING_CAPABILITIES t;
 
     HIORING ioRing;
-    UINT32 allocSize = 128;
+    UINT32 allocSize = 512;
     informationMap informations;
     UINT_PTR userDataDequesize;
     HANDLE threadHandle;
@@ -96,11 +105,7 @@ public:
     std::mutex bufferInfoMutex;
     std::mutex informationMapoMutex;
 
-    enum userDataEnum : UINT_PTR
-    {
-        userDataRegisterBuffers,
-        sscanf
-    };
+    std::atomic<bool> threadAtomic{true};
 
     smilyIoRing()
     {
@@ -112,13 +117,15 @@ public:
         IORING_CREATE_FLAGS Flags;
         Flags.Required = IORING_CREATE_REQUIRED_FLAGS_NONE;
         Flags.Advisory = IORING_CREATE_ADVISORY_FLAGS_NONE;
-        if (CreateIoRing(t.MaxVersion, Flags, t.MaxSubmissionQueueSize, t.MaxCompletionQueueSize, &ioRing) == S_OK)
+        HRESULT flag = CreateIoRing(t.MaxVersion, Flags, t.MaxSubmissionQueueSize, t.MaxCompletionQueueSize, &ioRing);
+        if (flag == S_OK)
         {
             // std::cout << "CreateIoRing::S_OK" << std::endl;
         }
         else
         {
-            throw std::runtime_error("CreateIoRing:S_FALSE:");
+            std::cout << "CreateIoRing:S_FALSE:" << std::endl;
+            // throw std::runtime_error("CreateIoRing:S_FALSE:");
         }
         userDataDequesize = t.MaxSubmissionQueueSize / 2;
         for (UINT_PTR i = 10; i < userDataDequesize; i++)
@@ -130,6 +137,12 @@ public:
     }
     ~smilyIoRing()
     {
+        // for (auto pMemory : bufferInfo)
+        // {
+        //     VirtualFree(pMemory.Address, 0, MEM_RELEASE);
+        // }
+        threadAtomic.store(false);
+        WaitForSingleObject(threadHandle, INFINITE);
         CloseHandle(threadHandle);
         CloseIoRing(ioRing);
     }
@@ -143,9 +156,13 @@ public:
     static DWORD WINAPI ThreadFunction(LPVOID lpParam)
     {
         auto *smilyIoRingThread = reinterpret_cast<smilyIoRing *>(lpParam);
+        IORING_CQE cqe;
         while (true)
         {
-            IORING_CQE cqe;
+            if (!smilyIoRingThread->threadAtomic)
+            {
+                break;
+            }
             bool PopIoRingCompletion = smilyIoRingThread->smilyPopIoRingCompletion(cqe);
             if (!PopIoRingCompletion)
             {
@@ -155,24 +172,40 @@ public:
             {
                 continue;
             }
-            auto information = smilyIoRingThread->getInformationMap(cqe.UserData);
-            // std::cout << "strlen():   " << information.size << "    " << std::endl;
-            auto Address = information.Address;
-            char *charPtr = reinterpret_cast<char *>(Address);
-            smilyIoRingThread->setregisterBuffers(Address);
-            std::cout  << charPtr << std::endl;
+
             if (cqe.ResultCode == 0)
             {
-                information.fileOffset += information.size;
-                smilyIoRingThread->setInformationMap(cqe.UserData, information);
-                smilyIoRingThread->smilyBuildIoRingReadFile(information.handle, information.eventHandle, information.fileOffset, true, cqe.UserData);
+                auto information = smilyIoRingThread->getInformationMap(cqe.UserData);
+
+                if (smilyIoRing::ioRingType::readFile == information.type)
+                { // std::cout << "strlen():   " << information.size << "    " << std::endl;
+                    auto Address = information.Address;
+                    char *charPtr = reinterpret_cast<char *>(Address);
+                    smilyIoRingThread->setregisterBuffers(Address);
+                    for (size_t i = 0; i < cqe.Information; i++)
+                    {
+                        std::cout << charPtr[i];
+                    }
+                    std::cout << "====================================================" << std::endl;
+                    information.fileOffset += information.size;
+                    smilyIoRingThread->setInformationMap(cqe.UserData, information);
+                    smilyIoRingThread->smilyBuildIoRingReadFile(information.handle, information.eventHandle, information.fileOffset, true, cqe.UserData);
+                }
+                if (smilyIoRing::ioRingType::writeFile == information.type)
+                {
+                    smilyIoRingThread->smilyBuildIoRingWriteFile(information.handle, information.eventHandle, information.fileOffset, true, cqe.UserData);
+                }
             }
             else
             {
-                CloseHandle(information.handle);
+
+                // CloseHandle(information.handle);
+                // const char *sendData = "helloword";
+                // send((SOCKET)information.handle, sendData, strlen(sendData), 0);
+                // closesocket((SOCKET)information.handle);
                 smilyIoRingThread->setUserDataDeque(cqe.UserData);
                 smilyIoRingThread->eraseInformationMap(cqe.UserData);
-                 std::cout << "strlen():   " <<0<<std::endl;
+                // std::cout << "\nstrlen():   " << 0 << std::endl;
             }
         }
         return 0;
@@ -182,7 +215,8 @@ public:
         threadHandle = CreateThread(nullptr, 0, &smilyIoRing::ThreadFunction, this, 0, nullptr);
         if (threadHandle == nullptr)
         {
-            throw std::runtime_error("CreateThread:S_FALSE:");
+            // throw std::runtime_error("CreateThread:S_FALSE:");
+            std::cout << "CreateThread:S_FALSE:" << std::endl;
         }
     }
     void setInformationMap(UINT_PTR handle, informationMap::readFileInformation value)
@@ -198,6 +232,7 @@ public:
 
     informationMap::readFileInformation getInformationMap(UINT_PTR handle)
     {
+        std::lock_guard<std::mutex> guard(informationMapoMutex);
         return informations.get(handle);
     }
     HANDLE getEventHandleDeque(bool flag = false)
@@ -260,44 +295,51 @@ public:
         UINT32 count = (size % allocSize == 0) ? (size / allocSize) : (size / allocSize + 1);
         for (UINT32 i = 0; i < count; i++)
         {
-            bufferInfo.emplace_back(VirtualAlloc(NULL, allocSize, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE), allocSize);
+            // bufferInfo.emplace_back(VirtualAlloc(NULL, allocSize, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE), allocSize);
+            bufferInfo.emplace_back(new char[allocSize]);
         }
-        if (BuildIoRingRegisterBuffers(ioRing, count, bufferInfo.data(), userDataRegisterBuffers) == S_OK)
+        HRESULT flag = BuildIoRingRegisterBuffers(ioRing, count, bufferInfo.data(), userDataRegisterBuffers);
+        if (flag == S_OK)
         {
             // std::cout << "BuildIoRingRegisterBuffers::S_OK" << std::endl;
         }
         else
         {
-            throw std::runtime_error("BuildIoRingRegisterBuffers:S_FALSE:");
+            // throw std::runtime_error("BuildIoRingRegisterBuffers:S_FALSE:");
+            std::cout << "BuildIoRingRegisterBuffers:S_FALSE:" << std::endl;
         }
 
-        for (UINT32 i = 0; i < count; i++)
+        for (UINT32 i = 1; i < count; i++)
         {
             registerBuffersDeque.push_back(bufferInfo.data()[i].Address);
         }
     }
     void smilySetIoRingCompletionEvent(HANDLE hEvent)
     {
-        if (SetIoRingCompletionEvent(ioRing, hEvent) == S_OK)
+        HRESULT flag = SetIoRingCompletionEvent(ioRing, hEvent);
+        if (flag == S_OK)
         {
             // std::cout << "SetIoRingCompletionEvent::S_OK" << std::endl;
         }
         else
         {
-            throw std::runtime_error("SetIoRingCompletionEvent:S_FALSE:");
+            // throw std::runtime_error("SetIoRingCompletionEvent:S_FALSE:");
+            std::cout << "SetIoRingCompletionEvent:S_FALSE:" << std::endl;
         }
     }
     void smilySubmitIoRing()
     {
         UINT32 submittedEntries;
-        if (SubmitIoRing(ioRing, 0, 1, &submittedEntries) == S_OK)
-        {
-            // std::cout << "SubmitIoRing::S_OK" << std::endl;
-        }
-        else
-        {
-            throw std::runtime_error("SubmitIoRing:S_FALSE:");
-        }
+        HRESULT flag = SubmitIoRing(ioRing, 0, 1, &submittedEntries);
+        // if (flag == S_OK)
+        // {
+        //     std::cout << "SubmitIoRing::S_OK" << std::endl;
+        // }
+        // else
+        // {
+        //     // throw std::runtime_error("SubmitIoRing:S_FALSE:");
+        //     std::cout << "SubmitIoRing:S_FALSE:" << x<<std::endl;
+        // }
     }
     void smilyBuildIoRingReadFile(HANDLE handle, HANDLE completionEvent, UINT64 fileOffset = 0, bool userDataFlag = false, UINT_PTR userData_ = 0)
     {
@@ -315,27 +357,74 @@ public:
         HANDLE eventHandle = CreateEvent(nullptr, FALSE, FALSE, nullptr);
         if (eventHandle == nullptr)
         {
-            throw std::runtime_error("CreateEvent:S_FALSE:");
+            // throw std::runtime_error("CreateEvent:S_FALSE:");
+            std::cout << "CreateEvent:S_FALSE:" << std::endl;
         }
         // setEventHandleDeque(eventHandle);
         //  smilySetIoRingCompletionEvent(eventHandle);
-        setInformationMap(userData, informationMap::readFileInformation{handle, completionEvent, size, fileOffset, eventHandle, Address});
-        if (BuildIoRingReadFile(ioRing, IoRingHandleRefFromHandle(handle), IoRingBufferRefFromPointer(Address), size, fileOffset, userData, IOSQE_FLAGS_DRAIN_PRECEDING_OPS) == S_OK)
+        setInformationMap(userData, informationMap::readFileInformation{handle, completionEvent, size, fileOffset, eventHandle, Address, smilyIoRing::ioRingType::readFile});
+        HRESULT flag = BuildIoRingReadFile(ioRing, IoRingHandleRefFromHandle(handle), IoRingBufferRefFromPointer(Address), size, fileOffset, userData, IOSQE_FLAGS_DRAIN_PRECEDING_OPS);
+        if (flag == S_OK)
         {
             // std::cout << "fileOffset::" << fileOffset << std::endl;
             // std::cout << "BuildIoRingReadFile::S_OK" << std::endl;
         }
+        else if (IORING_E_SUBMISSION_QUEUE_FULL == flag)
+        {
+            std::cout << "BuildIoRingReadFile:IORING_E_SUBMISSION_QUEUE_FULL:" << std::endl;
+            // throw std::runtime_error("BuildIoRingReadFile:S_FALSE:");
+            // std::cout << "BuildIoRingReadFile:S_FALSE:" << std::endl;
+        }
+        smilySubmitIoRing();
+    }
+
+    void smilyBuildIoRingWriteFile(HANDLE handle, HANDLE completionEvent, UINT64 fileOffset = 0, bool userDataFlag = false, UINT_PTR userData_ = 0)
+    {
+        UINT32 size = 512;
+        auto t = getregisterBuffers();
+        auto Address = (char *)t;
+        for (int i = 0; i < 512; i++)
+        {
+            *Address = '8';
+            Address++;
+        }
+        UINT_PTR userData;
+        if (!userDataFlag)
+        {
+            userData = getUserDataDeque();
+        }
         else
         {
-            throw std::runtime_error("BuildIoRingReadFile:S_FALSE:");
+            userData = userData_;
+        }
+        HANDLE eventHandle = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+        if (eventHandle == nullptr)
+        {
+            // throw std::runtime_error("CreateEvent:S_FALSE:");
+            std::cout << "CreateEvent:S_FALSE:" << std::endl;
+        }
+        // setEventHandleDeque(eventHandle);
+        //  smilySetIoRingCompletionEvent(eventHandle);
+        setInformationMap(userData, informationMap::readFileInformation{handle, completionEvent, size, fileOffset, eventHandle, t, smilyIoRing::ioRingType::writeFile});
+        HRESULT flag = BuildIoRingWriteFile(ioRing, IoRingHandleRefFromHandle(handle), IoRingBufferRefFromPointer(t), size, fileOffset, FILE_WRITE_FLAGS_WRITE_THROUGH, userData, IOSQE_FLAGS_DRAIN_PRECEDING_OPS);
+        if (flag == S_OK)
+        {
+            // std::cout << "fileOffset::" << fileOffset << std::endl;
+            std::cout << "BuildIoRingReadFile::S_OK" << std::endl;
+        }
+        else if (IORING_E_SUBMISSION_QUEUE_FULL == flag)
+        {
+            std::cout << "BuildIoRingReadFile:IORING_E_SUBMISSION_QUEUE_FULL:" << std::endl;
+            // throw std::runtime_error("BuildIoRingReadFile:S_FALSE:");
+            // std::cout << "BuildIoRingReadFile:S_FALSE:" << std::endl;
         }
         smilySubmitIoRing();
     }
 
     bool smilyPopIoRingCompletion(IORING_CQE &cqe)
     {
-
-        if (PopIoRingCompletion(ioRing, &cqe) == S_OK)
+        HRESULT flag = PopIoRingCompletion(ioRing, &cqe);
+        if (flag == S_OK)
         {
             // std::cout << "PopIoRingCompletion::S_OK" << std::endl;
             // std::cout << "Information: " << cqe.Information << std::endl;

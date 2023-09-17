@@ -8,7 +8,6 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D _CRT_SECURE_NO_WARNINGS /MP /utf-8")
 set(Boost_lib_DIR "D:\\lib\\boost_1_83_0\\lib")
 set(Boost_Include_DIR "D:\\lib\\boost_1_83_0\\include\\boost-1_83")
 
-
 # add header path
 include_directories(
     ${Boost_Include_DIR}
