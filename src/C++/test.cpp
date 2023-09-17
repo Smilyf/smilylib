@@ -71,13 +71,13 @@ int main(int argc, char *argv[])
         std::cout << "Failed to create event. Error code: " << errorCode << std::endl;
         return 1;
     }
-    iooo.smilyBuildIoRingRegisterBuffers(1024 * 20);
+    iooo.smilyBuildIoRingRegisterBuffers(1024 *1024*1024);
 
     int xxx = 0;
-    
+
     while (true)
     {
-        printf("+++++++++++++++++++...\n");
+        //printf("+++++++++++++++++++...\n");
         SOCKET sClient = accept(slisten, (SOCKADDR *)&remoteAddr, &nAddrlen);
         if (sClient == INVALID_SOCKET)
         {
@@ -87,15 +87,15 @@ int main(int argc, char *argv[])
         // printf("接受到一个连接：%s \r\n", inet_ntoa(remoteAddr.sin_addr));
 
         iooo.smilyBuildIoRingReadFile((HANDLE)sClient, eventHandle);
-        //printf("-----------------...\n");
-        // //接收数据
-        // int ret = recv(sClient, revData, 255, 0);
-        // if (ret > 0)
-        // {
-        //     revData[ret] = 0x00;
-        //     printf(revData);
-        // }
-        iooo.smilyBuildIoRingWriteFile((HANDLE)sClient, eventHandle);
+        // printf("-----------------...\n");
+        //  //接收数据
+        //  int ret = recv(sClient, revData, 255, 0);
+        //  if (ret > 0)
+        //  {
+        //      revData[ret] = 0x00;
+        //      printf(revData);
+        //  }
+        
         // //发送数据
         // const char *sendData = "hello world\n";
         // send(sClient, sendData, strlen(sendData), 0);

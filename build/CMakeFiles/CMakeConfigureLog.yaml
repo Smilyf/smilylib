@@ -24,7 +24,7 @@ events:
       The output was:
       0
       适用于 .NET Framework MSBuild 版本 17.8.0-preview-23376-06+f413f5497
-      生成启动时间为 2023/9/12 16:02:22。
+      生成启动时间为 2023/9/17 10:38:23。
       
       节点 1 上的项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\3.26.3\\CompilerIdC\\CompilerIdC.vcxproj”(默认目标)。
       PrepareForBuild:
@@ -52,7 +52,7 @@ events:
           0 个警告
           0 个错误
       
-      已用时间 00:00:00.97
+      已用时间 00:00:00.68
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -78,7 +78,7 @@ events:
       The output was:
       0
       适用于 .NET Framework MSBuild 版本 17.8.0-preview-23376-06+f413f5497
-      生成启动时间为 2023/9/12 16:02:23。
+      生成启动时间为 2023/9/17 10:38:24。
       
       节点 1 上的项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\3.26.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj”(默认目标)。
       PrepareForBuild:
@@ -106,7 +106,7 @@ events:
           0 个警告
           0 个错误
       
-      已用时间 00:00:00.62
+      已用时间 00:00:00.53
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -125,46 +125,46 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-t6smoe"
-      binary: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-t6smoe"
+      source: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-tk89tg"
+      binary: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-tk89tg"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-t6smoe
+        Change Dir: C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-tk89tg
         
-        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_892b3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && 适用于 .NET Framework MSBuild 版本 17.8.0-preview-23376-06+f413f5497
-        生成启动时间为 2023/9/12 16:02:24。
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_dc54a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && 适用于 .NET Framework MSBuild 版本 17.8.0-preview-23376-06+f413f5497
+        生成启动时间为 2023/9/17 10:38:25。
         
-        节点 1 上的项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-t6smoe\\cmTC_892b3.vcxproj”(默认目标)。
+        节点 1 上的项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tk89tg\\cmTC_dc54a.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_892b3.dir\\Debug\\”。
-          正在创建目录“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-t6smoe\\Debug\\”。
-          正在创建目录“cmTC_892b3.dir\\Debug\\cmTC_892b3.tlog\\”。
+          正在创建目录“cmTC_dc54a.dir\\Debug\\”。
+          正在创建目录“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tk89tg\\Debug\\”。
+          正在创建目录“cmTC_dc54a.dir\\Debug\\cmTC_dc54a.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_892b3.dir\\Debug\\cmTC_892b3.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_892b3.dir\\Debug\\cmTC_892b3.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_dc54a.dir\\Debug\\cmTC_dc54a.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_dc54a.dir\\Debug\\cmTC_dc54a.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_892b3.dir\\Debug\\\\" /Fd"cmTC_892b3.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_dc54a.dir\\Debug\\\\" /Fd"cmTC_dc54a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.38.32919 for x64
           CMakeCCompilerABI.c
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_892b3.dir\\Debug\\\\" /Fd"cmTC_892b3.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_dc54a.dir\\Debug\\\\" /Fd"cmTC_dc54a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-t6smoe\\Debug\\cmTC_892b3.exe" /INCREMENTAL /ILK:"cmTC_892b3.dir\\Debug\\cmTC_892b3.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-t6smoe/Debug/cmTC_892b3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-t6smoe/Debug/cmTC_892b3.lib" /MACHINE:X64  /machine:x64 cmTC_892b3.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_892b3.vcxproj -> C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-t6smoe\\Debug\\cmTC_892b3.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tk89tg\\Debug\\cmTC_dc54a.exe" /INCREMENTAL /ILK:"cmTC_dc54a.dir\\Debug\\cmTC_dc54a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-tk89tg/Debug/cmTC_dc54a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-tk89tg/Debug/cmTC_dc54a.lib" /MACHINE:X64  /machine:x64 cmTC_dc54a.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_dc54a.vcxproj -> C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tk89tg\\Debug\\cmTC_dc54a.exe
         FinalizeBuildStatus:
-          正在删除文件“cmTC_892b3.dir\\Debug\\cmTC_892b3.tlog\\unsuccessfulbuild”。
-          正在对“cmTC_892b3.dir\\Debug\\cmTC_892b3.tlog\\cmTC_892b3.lastbuildstate”执行 Touch 任务。
-        已完成生成项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-t6smoe\\cmTC_892b3.vcxproj”(默认目标)的操作。
+          正在删除文件“cmTC_dc54a.dir\\Debug\\cmTC_dc54a.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_dc54a.dir\\Debug\\cmTC_dc54a.tlog\\cmTC_dc54a.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tk89tg\\cmTC_dc54a.vcxproj”(默认目标)的操作。
         
         已成功生成。
             0 个警告
             0 个错误
         
-        已用时间 00:00:00.58
+        已用时间 00:00:00.59
         
       exitCode: 0
   -
@@ -176,46 +176,46 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-wnwfl5"
-      binary: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-wnwfl5"
+      source: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-phdts0"
+      binary: "C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-phdts0"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-wnwfl5
+        Change Dir: C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-phdts0
         
-        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_aa2b2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && 适用于 .NET Framework MSBuild 版本 17.8.0-preview-23376-06+f413f5497
-        生成启动时间为 2023/9/12 16:02:25。
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Preview/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_9ab85.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && 适用于 .NET Framework MSBuild 版本 17.8.0-preview-23376-06+f413f5497
+        生成启动时间为 2023/9/17 10:38:25。
         
-        节点 1 上的项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wnwfl5\\cmTC_aa2b2.vcxproj”(默认目标)。
+        节点 1 上的项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-phdts0\\cmTC_9ab85.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_aa2b2.dir\\Debug\\”。
-          正在创建目录“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wnwfl5\\Debug\\”。
-          正在创建目录“cmTC_aa2b2.dir\\Debug\\cmTC_aa2b2.tlog\\”。
+          正在创建目录“cmTC_9ab85.dir\\Debug\\”。
+          正在创建目录“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-phdts0\\Debug\\”。
+          正在创建目录“cmTC_9ab85.dir\\Debug\\cmTC_9ab85.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_aa2b2.dir\\Debug\\cmTC_aa2b2.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_aa2b2.dir\\Debug\\cmTC_aa2b2.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_9ab85.dir\\Debug\\cmTC_9ab85.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_9ab85.dir\\Debug\\cmTC_9ab85.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aa2b2.dir\\Debug\\\\" /Fd"cmTC_aa2b2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_9ab85.dir\\Debug\\\\" /Fd"cmTC_9ab85.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.38.32919 for x64
           CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aa2b2.dir\\Debug\\\\" /Fd"cmTC_aa2b2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_9ab85.dir\\Debug\\\\" /Fd"cmTC_9ab85.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\sf\\cmake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wnwfl5\\Debug\\cmTC_aa2b2.exe" /INCREMENTAL /ILK:"cmTC_aa2b2.dir\\Debug\\cmTC_aa2b2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-wnwfl5/Debug/cmTC_aa2b2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-wnwfl5/Debug/cmTC_aa2b2.lib" /MACHINE:X64  /machine:x64 cmTC_aa2b2.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_aa2b2.vcxproj -> C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wnwfl5\\Debug\\cmTC_aa2b2.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Preview\\VC\\Tools\\MSVC\\14.38.32919\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-phdts0\\Debug\\cmTC_9ab85.exe" /INCREMENTAL /ILK:"cmTC_9ab85.dir\\Debug\\cmTC_9ab85.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-phdts0/Debug/cmTC_9ab85.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/yam_l/cpptracker/build/CMakeFiles/CMakeScratch/TryCompile-phdts0/Debug/cmTC_9ab85.lib" /MACHINE:X64  /machine:x64 cmTC_9ab85.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_9ab85.vcxproj -> C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-phdts0\\Debug\\cmTC_9ab85.exe
         FinalizeBuildStatus:
-          正在删除文件“cmTC_aa2b2.dir\\Debug\\cmTC_aa2b2.tlog\\unsuccessfulbuild”。
-          正在对“cmTC_aa2b2.dir\\Debug\\cmTC_aa2b2.tlog\\cmTC_aa2b2.lastbuildstate”执行 Touch 任务。
-        已完成生成项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wnwfl5\\cmTC_aa2b2.vcxproj”(默认目标)的操作。
+          正在删除文件“cmTC_9ab85.dir\\Debug\\cmTC_9ab85.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_9ab85.dir\\Debug\\cmTC_9ab85.tlog\\cmTC_9ab85.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“C:\\Users\\yam_l\\cpptracker\\build\\CMakeFiles\\CMakeScratch\\TryCompile-phdts0\\cmTC_9ab85.vcxproj”(默认目标)的操作。
         
         已成功生成。
             0 个警告
             0 个错误
         
-        已用时间 00:00:00.55
+        已用时间 00:00:00.58
         
       exitCode: 0
 ...
