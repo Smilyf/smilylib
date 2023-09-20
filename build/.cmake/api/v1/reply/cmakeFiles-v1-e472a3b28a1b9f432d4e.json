@@ -6,7 +6,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "C:/Users/yam_l/cpptracker/build/CMakeFiles/3.26.3/CMakeSystem.cmake"
+			"path" : "C:/Users/yam_l/smilylib/build/CMakeFiles/3.26.3/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -15,11 +15,11 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "C:/Users/yam_l/cpptracker/build/CMakeFiles/3.26.3/CMakeCCompiler.cmake"
+			"path" : "C:/Users/yam_l/smilylib/build/CMakeFiles/3.26.3/CMakeCCompiler.cmake"
 		},
 		{
 			"isGenerated" : true,
-			"path" : "C:/Users/yam_l/cpptracker/build/CMakeFiles/3.26.3/CMakeCXXCompiler.cmake"
+			"path" : "C:/Users/yam_l/smilylib/build/CMakeFiles/3.26.3/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -83,7 +83,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "C:/Users/yam_l/cpptracker/build/CMakeFiles/3.26.3/CMakeRCCompiler.cmake"
+			"path" : "C:/Users/yam_l/smilylib/build/CMakeFiles/3.26.3/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -139,8 +139,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/yam_l/cpptracker/build",
-		"source" : "C:/Users/yam_l/cpptracker/src/C++"
+		"build" : "C:/Users/yam_l/smilylib/build",
+		"source" : "C:/Users/yam_l/smilylib/src/C++"
 	},
 	"version" : 
 	{

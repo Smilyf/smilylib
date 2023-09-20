@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\yam_l\cpptracker\src\C++\test.cpp">
+    <ClCompile Include="C:\Users\yam_l\smilylib\src\C++\test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\yam_l\cpptracker\src\C++\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\yam_l\smilylib\src\C++\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{AB5B5E0D-41C4-36E0-9537-1ECF47A8E20C}</UniqueIdentifier>
+      <UniqueIdentifier>{CF912F8B-5D01-3456-A6CF-ECC0FFC47CB0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

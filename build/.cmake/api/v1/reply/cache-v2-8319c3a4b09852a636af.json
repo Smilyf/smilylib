@@ -27,7 +27,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/yam_l/cpptracker/build"
+			"value" : "c:/Users/yam_l/smilylib/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -455,7 +455,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/yam_l/cpptracker/build/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/yam_l/smilylib/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/yam_l/cpptracker/src/C++"
+			"value" : "C:/Users/yam_l/smilylib/src/C++"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1051,7 +1051,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/yam_l/cpptracker/build"
+			"value" : "C:/Users/yam_l/smilylib/build"
 		},
 		{
 			"name" : "cpptracker_IS_TOP_LEVEL",
@@ -1075,7 +1075,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/yam_l/cpptracker/src/C++"
+			"value" : "C:/Users/yam_l/smilylib/src/C++"
 		}
 	],
 	"kind" : "cache",

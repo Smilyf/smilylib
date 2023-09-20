@@ -14,6 +14,7 @@
 #include <winsock2.h>
 #pragma comment(lib, "ws2_32.lib")
 #include "smilyService/windows/smilyIoRing.cpp"
+using namespace smily;
 smilyIoRing iooo;
 int main(int argc, char *argv[])
 {

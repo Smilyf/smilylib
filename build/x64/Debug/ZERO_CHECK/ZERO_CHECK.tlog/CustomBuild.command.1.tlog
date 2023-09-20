@@ -1,6 +1,6 @@
-^C:\USERS\YAM_L\CPPTRACKER\BUILD\CMAKEFILES\66DEE26D2691059914FA2A9223A9DE27\GENERATE.STAMP.RULE
+^C:\USERS\YAM_L\SMILYLIB\BUILD\CMAKEFILES\6F134987EC3167478F4F841791A2EF24\GENERATE.STAMP.RULE
 setlocal
-D:\sf\cmake\bin\cmake.exe -SC:/Users/yam_l/cpptracker/src/C++ -BC:/Users/yam_l/cpptracker/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/yam_l/cpptracker/build/cpptracker.sln
+D:\sf\cmake\bin\cmake.exe -SC:/Users/yam_l/smilylib/src/C++ -BC:/Users/yam_l/smilylib/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/yam_l/smilylib/build/cpptracker.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\yam_l\cpptracker\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\yam_l\smilylib\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\yam_l\cpptracker\build\Debug\cpptracker.exe</FullPath>
+      <FullPath>C:\Users\yam_l\smilylib\build\Debug\cpptracker.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
